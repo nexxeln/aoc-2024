@@ -17,12 +17,14 @@ withinBounds :: [Int] -> Bool
 withinBounds = all (\x -> abs x >= 1 && abs x <= 3)
 
 isSafe :: [Int] -> Bool
-isSafe xs = allUnique xs 
-         && (let diffs = differences xs in 
-             isMonotonic diffs && withinBounds diffs)
+isSafe xs =
+  allUnique xs
+    && ( let diffs = differences xs
+          in isMonotonic diffs && withinBounds diffs
+       )
 
 main :: IO ()
 main = do
-    contents <- readFile "input.txt"
-    let sequences = [[read x | x <- words line] | line <- lines contents]
-    print $ sum [1 | xs <- sequences, isSafe xs] 
+  contents <- readFile "input.txt"
+  let sequences = [[read x | x <- words line] | line <- lines contents]
+  print $ sum [1 | xs <- sequences, isSafe xs]

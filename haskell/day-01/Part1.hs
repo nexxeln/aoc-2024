@@ -8,6 +8,6 @@ solve pairs = sum [abs (a - b) | (a, b) <- zip lefts rights]
 
 main :: IO ()
 main = do
-    contents <- readFile "input.txt"
-    let pairs = [(read l, read r) | [l, r] <- map words (lines contents)]
-    print (solve pairs) 
+  contents <- readFile "input.txt"
+  let pairs = [(read l, read r) | [l, r] <- map words (lines contents)]
+  print (solve pairs)
